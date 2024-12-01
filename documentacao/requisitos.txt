@@ -1,0 +1,3 @@
+RF001 - permitir a inserção de livros por autores e admins.
+RF002 - permitir a inserção de mangas por autores e admins.
+RF003 - permitir o upload de arquivos.
