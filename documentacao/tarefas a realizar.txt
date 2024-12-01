@@ -1,2 +1,2 @@
-criar uma instância para autor.
+criar classes para usuarios do sistema e implementar o jdbc.
 montar uma api ou implementar no código uma conexão com drive
