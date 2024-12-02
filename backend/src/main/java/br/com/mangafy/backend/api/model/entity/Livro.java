@@ -1,4 +1,4 @@
-package br.com.mangafy.backend.model.entity;
+package br.com.mangafy.backend.api.model.entity;
 
 import java.util.UUID;
 

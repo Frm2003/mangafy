@@ -1,4 +1,4 @@
-package br.com.mangafy.backend.controller;
+package br.com.mangafy.backend.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.mangafy.backend.model.dto.request.MangaDto;
-import br.com.mangafy.backend.service.MangaService;
+import br.com.mangafy.backend.api.model.dto.request.MangaDto;
+import br.com.mangafy.backend.api.service.MangaService;
 import jakarta.validation.Valid;
 
 @RestController

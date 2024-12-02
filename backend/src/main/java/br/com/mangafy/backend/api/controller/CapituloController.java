@@ -1,4 +1,7 @@
-package br.com.mangafy.backend.controller;
+package br.com.mangafy.backend.api.controller;
+
+import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,23 +11,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.mangafy.backend.model.dto.request.LivroDto;
-import br.com.mangafy.backend.service.LivroService;
+import br.com.mangafy.backend.api.model.dto.request.CapituloDto;
+import br.com.mangafy.backend.api.service.CapituloService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/livros")
-public class LivroController {
+@RequestMapping("/capitulos")
+public class CapituloController {
 	@Autowired
-	private LivroService livroService;
-	
+	private CapituloService capituloService;
+
 	@PostMapping
-	public ResponseEntity<Object> insert(@RequestBody @Valid LivroDto livroDto) {
+	public ResponseEntity<Object> insert(@RequestBody @Valid UUID idManga, @RequestBody @Valid List<CapituloDto> list) {
 		try {
-			return ResponseEntity.status(HttpStatus.CREATED).body(livroService.insert(livroDto));
+			return ResponseEntity.status(HttpStatus.CREATED).body(capituloService.insert(idManga, list));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 	}
-	
 }

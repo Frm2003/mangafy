@@ -1,8 +1,8 @@
-package br.com.mangafy.backend.repository;
+package br.com.mangafy.backend.api.repository;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.mangafy.backend.model.entity.Capitulo;
+import br.com.mangafy.backend.api.model.entity.Capitulo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;

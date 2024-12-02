@@ -1,12 +1,12 @@
-package br.com.mangafy.backend.service;
+package br.com.mangafy.backend.api.service;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.mangafy.backend.model.dto.request.LivroDto;
-import br.com.mangafy.backend.model.entity.Livro;
-import br.com.mangafy.backend.repository.LivroRepository;
+import br.com.mangafy.backend.api.model.dto.request.LivroDto;
+import br.com.mangafy.backend.api.model.entity.Livro;
+import br.com.mangafy.backend.api.repository.LivroRepository;
 
 @Service
 public class LivroService {

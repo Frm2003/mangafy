@@ -1,11 +1,11 @@
-package br.com.mangafy.backend.repository;
+package br.com.mangafy.backend.api.repository;
 
 import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.mangafy.backend.model.entity.Manga;
+import br.com.mangafy.backend.api.model.entity.Manga;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;

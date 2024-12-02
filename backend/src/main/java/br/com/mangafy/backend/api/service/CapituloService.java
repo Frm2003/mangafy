@@ -1,4 +1,4 @@
-package br.com.mangafy.backend.service;
+package br.com.mangafy.backend.api.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,10 +7,10 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.mangafy.backend.model.dto.request.CapituloDto;
-import br.com.mangafy.backend.model.entity.Capitulo;
-import br.com.mangafy.backend.model.entity.Manga;
-import br.com.mangafy.backend.repository.CapituloRepository;
+import br.com.mangafy.backend.api.model.dto.request.CapituloDto;
+import br.com.mangafy.backend.api.model.entity.Capitulo;
+import br.com.mangafy.backend.api.model.entity.Manga;
+import br.com.mangafy.backend.api.repository.CapituloRepository;
 
 @Service
 public class CapituloService {
