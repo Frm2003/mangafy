@@ -1,6 +1,6 @@
 -- -- Criação da tabela autor
-CREATE TABLE autor (
-    id_autor UUID PRIMARY KEY,
+CREATE TABLE usuarios (
+    id_user UUID PRIMARY KEY,
     nome VARCHAR(255) NOT NULL, 
     email VARCHAR(255) UNIQUE NOT NULL,
     senha VARCHAR(255) NOT NULL, 
@@ -11,7 +11,7 @@ CREATE TABLE autor (
 );
 
 -- Criação da tabela livro
-CREATE TABLE livro (
+CREATE TABLE livros (
     id_livro UUID PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     id_autor UUID NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE livro (
 );
 
 -- Criação da tabela manga
-CREATE TABLE manga (
+CREATE TABLE mangas (
     id_manga UUID PRIMARY KEY,
     titulo VARCHAR(255),
     id_autor UUID NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE manga (
 );
 
 -- Criação da tabela capitulo_manga
-CREATE TABLE capitulo_manga (
+CREATE TABLE capitulos_manga (
     id_livro UUID PRIMARY KEY,
     num_capitulo INT NOT NULL,
     qtd_paginas INT NOT NULL,

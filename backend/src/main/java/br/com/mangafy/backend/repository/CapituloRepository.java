@@ -15,7 +15,7 @@ public class CapituloRepository {
 
 	@Transactional
 	public Capitulo save(Capitulo capitulo) {
-		String sql = "INSERT INTO capitulo_manga (id_livro, num_capitulo, qtd_paginas, path, id_manga) VALUES (?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO capitulos_manga (id_livro, num_capitulo, qtd_paginas, path, id_manga) VALUES (?, ?, ?, ?, ?)";
 
 		Query nativeQuery = this.entityManager.createNativeQuery(sql);
 		nativeQuery.setParameter(1, capitulo.getId());

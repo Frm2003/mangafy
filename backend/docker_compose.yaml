@@ -8,5 +8,5 @@ services:
             - POSTGRES_USER=dev
             - POSTGRES_DB=teste
             - POSTGRES_PASSWORD=123456
-        container_name: mangafy
+        container_name: database_mangafy
         restart: always

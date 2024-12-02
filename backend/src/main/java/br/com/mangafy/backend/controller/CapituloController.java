@@ -16,7 +16,7 @@ import br.com.mangafy.backend.service.CapituloService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/capitulo")
+@RequestMapping("/capitulos")
 public class CapituloController {
 	@Autowired
 	private CapituloService capituloService;
