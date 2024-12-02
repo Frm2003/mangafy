@@ -2,6 +2,7 @@ package br.com.mangafy.backend.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,10 +20,10 @@ public class CapituloService {
 	@Autowired
 	private MangaService MangaService;
 	
-	public List<Capitulo> insert(List<CapituloDto> listDto) {
+	public List<Capitulo> insert(UUID idManga, List<CapituloDto> listDto) {
 		List<Capitulo> capitulos = new ArrayList<Capitulo>();
 		
-		Manga manga = MangaService.selectById(listDto.getFirst().idManga());
+		Manga manga = MangaService.selectById(idManga);
 		
 		listDto.forEach(capituloDto -> {
 			Capitulo capitulo = new Capitulo();
