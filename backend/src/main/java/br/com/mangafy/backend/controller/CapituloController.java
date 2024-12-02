@@ -1,6 +1,7 @@
 package br.com.mangafy.backend.controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,11 +20,11 @@ import jakarta.validation.Valid;
 public class CapituloController {
 	@Autowired
 	private CapituloService capituloService;
-	
+
 	@PostMapping
-	public ResponseEntity<Object> insert(@RequestBody @Valid List<CapituloDto> list) {
+	public ResponseEntity<Object> insert(@RequestBody @Valid UUID idManga, @RequestBody @Valid List<CapituloDto> list) {
 		try {
-			return ResponseEntity.status(HttpStatus.CREATED).body(capituloService.insert(list));
+			return ResponseEntity.status(HttpStatus.CREATED).body(capituloService.insert(idManga, list));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
