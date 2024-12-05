@@ -18,7 +18,7 @@ public class MangaRepository {
 	
 	@Transactional
 	public Manga save(Manga manga) {
-		String sql = "INSERT INTO mangas (id_manga, titulo, autor, qtd_capitulos) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO mangas (id_manga, titulo, autor, qtd_capitulos, genero) VALUES (?, ?, ?, ?, ?)";
 		
 		Query nativeQuery = this.entityManager.createNativeQuery(sql);
 		
@@ -26,6 +26,7 @@ public class MangaRepository {
 		nativeQuery.setParameter(2, manga.getTitulo());
 		nativeQuery.setParameter(3, manga.getAutor().getId());
 		nativeQuery.setParameter(4, manga.getQtdCapitulos());
+		nativeQuery.setParameter(5, manga.getGenero());
 		
 		nativeQuery.executeUpdate();
 		

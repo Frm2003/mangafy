@@ -10,6 +10,7 @@ public class Manga {
 	private String titulo;
 	private Autor autor;
 	private int qtdCapitulos;
+	private String genero;
 	
 	public Manga() {
 		this.id = UUID.randomUUID();

@@ -6,7 +6,8 @@ import jakarta.validation.constraints.NotNull;
 public record MangaDto(
 		@NotBlank String titulo,
 		@NotBlank String autor,
-		@NotNull int qtdCapitulos
+		@NotNull int qtdCapitulos,
+		@NotBlank String genero
 ) {
 
 }
