@@ -7,7 +7,8 @@ CREATE TABLE usuarios (
     createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     role VARCHAR(50) NOT NULL,
-    CONSTRAINT email_unique UNIQUE (email)
+    --id_edttora UUID,
+    --FOREIGN KEY (id_edttora) REFERENCES usuarios(id_user)
 );
 
 -- Criação da tabela livro
@@ -15,8 +16,12 @@ CREATE TABLE livros (
     id_livro UUID PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     id_autor UUID NOT NULL,
+    id_editora UUID,
     qtd_paginas INT NOT NULL,
-    FOREIGN KEY (id_autor) REFERENCES autor(id_autor) ON DELETE CASCADE
+    genero VARCHAR(255) NOT NULL,
+    path VARCHAR(255) NOT NULL,
+    FOREIGN KEY (id_autor) REFERENCES usuarios(id_user),
+    FOREIGN KEY (id_editora) REFERENCES usuarios(id_user)
 );
 
 -- Criação da tabela manga
@@ -25,6 +30,7 @@ CREATE TABLE mangas (
     titulo VARCHAR(255),
     id_autor UUID NOT NULL,
     qtd_capitulos INT NOT NULL
+    genero VARCHAR(255) NOT NULL,
 );
 
 -- Criação da tabela capitulo_manga
