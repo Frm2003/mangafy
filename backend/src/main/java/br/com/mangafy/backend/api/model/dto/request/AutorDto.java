@@ -9,8 +9,7 @@ public record AutorDto(
 	    @NotBlank String email,
 	    @NotBlank String senha,
 	    @NotBlank LocalDateTime createdAt,
-	    @NotBlank LocalDateTime updatedAt,
-	    @NotBlank String role
+	    @NotBlank LocalDateTime updatedAt
 ) {
 
 }
