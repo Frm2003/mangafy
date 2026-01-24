@@ -13,3 +13,6 @@
 # Sistema
 .DS_Store
 Thumbs.db
+
+#Docs
+doc/mangafy.vpp.*
