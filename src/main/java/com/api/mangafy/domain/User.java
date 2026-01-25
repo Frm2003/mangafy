@@ -19,7 +19,6 @@ public class User {
 	private String nickName;
 	private String passwd;
 	private Set<Roles> roles;
-	
-//	private ReaderProfile readerProfile;
-//  private AuthorProfile authorProfile;
+
+	private AuthorProfile authorProfile;
 }
