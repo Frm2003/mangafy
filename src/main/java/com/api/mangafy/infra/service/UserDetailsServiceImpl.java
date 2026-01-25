@@ -5,6 +5,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.api.mangafy.adapters.security.UserPrincipal;
+import com.api.mangafy.infra.entity.UserEntity;
 import com.api.mangafy.infra.repository.UserEntityRepository;
 
 @Service
@@ -17,8 +19,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		return repository.findByEmail(username)
+		UserEntity entity = repository.findByEmail(username)
 				.orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado: " + username));
+		
+		return new UserPrincipal(entity.getId(), entity.getEmail(), entity.getPasswd(), entity.getRoles());
 	}
 
 }
