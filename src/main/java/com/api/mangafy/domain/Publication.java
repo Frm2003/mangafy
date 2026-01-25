@@ -1,6 +1,7 @@
 package com.api.mangafy.domain;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 import lombok.AllArgsConstructor;
@@ -21,4 +22,5 @@ public class Publication {
 	private String ISBN10;
 	private String ISBN13;
 	private String contentStorageUrl;
+	private List<Gender> genders;
 }

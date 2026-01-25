@@ -1,26 +1,33 @@
 package com.api.mangafy.application.useCase;
 
+import java.util.List;
 import java.util.UUID;
 
 import com.api.mangafy.adapters.dto.CreatePublicationDto;
+import com.api.mangafy.application.ports.GenderRepository;
 import com.api.mangafy.application.ports.PublicationRepository;
 import com.api.mangafy.application.ports.UserRepository;
+import com.api.mangafy.domain.Gender;
 import com.api.mangafy.domain.Publication;
 import com.api.mangafy.domain.User;
 
 public class CreatePublicationUseCase {
 	private final PublicationRepository publicationrepository;
 	private final UserRepository userRepository;
+	private final GenderRepository genderRepository;
 
-	public CreatePublicationUseCase(PublicationRepository publicationrepository, UserRepository userRepository) {
+	public CreatePublicationUseCase(PublicationRepository publicationrepository, UserRepository userRepository, GenderRepository genderRepository) {
 		this.publicationrepository = publicationrepository;
 		this.userRepository = userRepository;
+		this.genderRepository = genderRepository;
 	}
 
 	public void execute(UUID authorId, CreatePublicationDto dto) {
 		User user = this.userRepository.findById(authorId)
 	    		.orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
-				
+
+		List<Gender> genderList = this.genderRepository.findAllById(dto.genderIds());
+		
 		Publication publication = new Publication();
 		
 		publication.setId(UUID.randomUUID());
@@ -31,6 +38,7 @@ public class CreatePublicationUseCase {
 		publication.setISBN10(dto.ISBN10());
 		publication.setISBN13(dto.ISBN13());
 		publication.setContentStorageUrl(dto.contentStorageUrl());
+		publication.setGenders(genderList);
 		
 		this.publicationrepository.create(publication);
 	}
