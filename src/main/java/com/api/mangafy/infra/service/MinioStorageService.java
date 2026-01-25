@@ -4,7 +4,7 @@ import io.minio.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.api.mangafy.application.StorageService;
+import com.api.mangafy.application.ports.StorageService;
 
 import java.io.InputStream;
 
