@@ -39,5 +39,16 @@ public class UserController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 	}
-		
+
+	@PreAuthorize("hasRole('READER')")
+	@PutMapping("/author")
+	public ResponseEntity<Void> becomeAuthor(@AuthenticationPrincipal Jwt jwt, @RequestBody BecomeAuthorDto dto) {
+		try {
+			this.becomeAuthorUseCase.execute(UUID.fromString(jwt.getSubject()), dto);
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		}
+	}
+
 }
