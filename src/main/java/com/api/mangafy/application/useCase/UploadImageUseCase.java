@@ -12,8 +12,8 @@ public class UploadImageUseCase {
 		this.service = service;
 	}
 	
-	public String execute(UUID authorId, String category, String fileName, InputStream stream, String contentType, long size) {
-		String path = authorId.toString() + "/" + category + "/" + fileName;		
+	public String execute(UUID authorId, String category, String type, String fileName, InputStream stream, String contentType, long size) {
+		String path = authorId.toString() + "/" + category + "/" + type + "/" + fileName;		
 		return this.service.upload(path, stream, contentType, size);
 	}
 }

@@ -14,11 +14,13 @@ public class PublicationMapper {
 	public static PublicationEntity toEntity(Publication publication) {
 		UserEntity userEntity = UserMapper.toEntity(publication.getUser());
 
-		AuthorProfileEntity authorProfileEntity = AuthorProfileMapper.toEntity(publication.getUser().getAuthorProfile(), userEntity);
+		AuthorProfileEntity authorProfileEntity = AuthorProfileMapper.toEntity(publication.getUser().getAuthorProfile(),
+				userEntity);
 
 		List<GenderEntity> genders = publication.getGenders().stream().map(GenderMapper::toEntity).toList();
-		
+
 		PublicationEntity entity = new PublicationEntity();
+
 		entity.setId(publication.getId());
 		entity.setTitle(publication.getTitle());
 		entity.setSynopsis(publication.getSynopsis());
@@ -26,6 +28,7 @@ public class PublicationMapper {
 		entity.setIsbn10(publication.getISBN10());
 		entity.setIsbn13(publication.getISBN13());
 		entity.setContentStorageUrl(publication.getContentStorageUrl());
+		entity.setCoverStorageUrl(publication.getCoverStorageUrl());
 
 		entity.setGenders(genders);
 		entity.setAuthor(authorProfileEntity);
@@ -40,7 +43,7 @@ public class PublicationMapper {
 		User user = UserMapper.toDomain(entity.getAuthor().getUser());
 
 		List<Gender> genders = entity.getGenders().stream().map(GenderMapper::toDomain).toList();
-		
+
 		Publication publication = new Publication();
 		publication.setId(entity.getId());
 		publication.setTitle(entity.getTitle());
@@ -49,10 +52,10 @@ public class PublicationMapper {
 		publication.setISBN10(entity.getIsbn10());
 		publication.setISBN13(entity.getIsbn13());
 		publication.setContentStorageUrl(entity.getContentStorageUrl());
-		
+
 		publication.setUser(user);
 		publication.setGenders(genders);
-		
+
 		return publication;
 	}
 }

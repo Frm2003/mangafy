@@ -45,6 +45,9 @@ public class PublicationEntity {
 	@Column(name = "content_storage_url", unique = true)
 	private String contentStorageUrl;
 
+	@Column(name = "cover_storage_url", unique = true)
+	private String coverStorageUrl;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "author_id", nullable = false)
 	private AuthorProfileEntity author;

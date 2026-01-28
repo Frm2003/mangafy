@@ -38,6 +38,7 @@ public class CreatePublicationUseCase {
 		publication.setISBN10(dto.ISBN10());
 		publication.setISBN13(dto.ISBN13());
 		publication.setContentStorageUrl(dto.contentStorageUrl());
+		publication.setCoverStorageUrl(dto.coverStorageUrl());
 		publication.setGenders(genderList);
 		
 		this.publicationrepository.create(publication);

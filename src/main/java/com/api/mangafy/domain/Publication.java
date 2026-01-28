@@ -22,5 +22,6 @@ public class Publication {
 	private String ISBN10;
 	private String ISBN13;
 	private String contentStorageUrl;
+	private String coverStorageUrl;
 	private List<Gender> genders;
 }

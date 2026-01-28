@@ -27,12 +27,14 @@ public class StorageController {
 	public ResponseEntity<String> upload(
 			@AuthenticationPrincipal Jwt jwt, 
 			@RequestPart("image") MultipartFile image,
-			@RequestPart("category") String category
+			@RequestParam String category,
+			@RequestParam String type
 	) {
 		try {
 			String path = this.uploadImageUseCase.execute(
 				UUID.fromString(jwt.getSubject()), 
-				category, 
+				category,
+				type,
 				image.getOriginalFilename(),
 				image.getInputStream(), 
 				image.getContentType(), 

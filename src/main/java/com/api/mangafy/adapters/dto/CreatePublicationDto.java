@@ -10,6 +10,7 @@ public record CreatePublicationDto(
         String ISBN10,
         String ISBN13,
         String contentStorageUrl,
+        String coverStorageUrl,
         List<Integer> genderIds
 ) {
 
