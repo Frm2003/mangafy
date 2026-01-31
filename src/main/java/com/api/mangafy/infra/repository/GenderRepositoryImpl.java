@@ -4,21 +4,21 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.api.mangafy.application.ports.GenderRepository;
-import com.api.mangafy.domain.Gender;
-import com.api.mangafy.infra.mapper.GenderMapper;
+import com.api.mangafy.application.ports.GenreRepository;
+import com.api.mangafy.domain.Genre;
+import com.api.mangafy.infra.mapper.GenreMapper;
 
 @Repository
-public class GenderRepositoryImpl implements GenderRepository {
-	private final GenderEntityRepository jpaRepository;
+public class GenderRepositoryImpl implements GenreRepository {
+	private final GenreEntityRepository jpaRepository;
 
-	public GenderRepositoryImpl(GenderEntityRepository jpaRepository) {
+	public GenderRepositoryImpl(GenreEntityRepository jpaRepository) {
 		this.jpaRepository = jpaRepository;
 	}
 
 	@Override
-	public List<Gender> findAllById(List<Integer> ids) {
-		return this.jpaRepository.findAllById(ids).stream().map(GenderMapper::toDomain).toList();
+	public List<Genre> findAllById(List<Integer> ids) {
+		return this.jpaRepository.findAllById(ids).stream().map(GenreMapper::toDomain).toList();
 	}
 
 }

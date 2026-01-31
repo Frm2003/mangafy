@@ -4,19 +4,19 @@ import java.util.List;
 import java.util.UUID;
 
 import com.api.mangafy.adapters.dto.CreatePublicationDto;
-import com.api.mangafy.application.ports.GenderRepository;
+import com.api.mangafy.application.ports.GenreRepository;
 import com.api.mangafy.application.ports.PublicationRepository;
 import com.api.mangafy.application.ports.UserRepository;
-import com.api.mangafy.domain.Gender;
+import com.api.mangafy.domain.Genre;
 import com.api.mangafy.domain.Publication;
 import com.api.mangafy.domain.User;
 
 public class CreatePublicationUseCase {
 	private final PublicationRepository publicationrepository;
 	private final UserRepository userRepository;
-	private final GenderRepository genderRepository;
+	private final GenreRepository genderRepository;
 
-	public CreatePublicationUseCase(PublicationRepository publicationrepository, UserRepository userRepository, GenderRepository genderRepository) {
+	public CreatePublicationUseCase(PublicationRepository publicationrepository, UserRepository userRepository, GenreRepository genderRepository) {
 		this.publicationrepository = publicationrepository;
 		this.userRepository = userRepository;
 		this.genderRepository = genderRepository;
@@ -26,7 +26,7 @@ public class CreatePublicationUseCase {
 		User user = this.userRepository.findById(authorId)
 	    		.orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
-		List<Gender> genderList = this.genderRepository.findAllById(dto.genderIds());
+		List<Genre> genderList = this.genderRepository.findAllById(dto.genderIds());
 		
 		Publication publication = new Publication();
 		
@@ -39,7 +39,7 @@ public class CreatePublicationUseCase {
 		publication.setISBN13(dto.ISBN13());
 		publication.setContentStorageUrl(dto.contentStorageUrl());
 		publication.setCoverStorageUrl(dto.coverStorageUrl());
-		publication.setGenders(genderList);
+		publication.setGenres(genderList);
 		
 		this.publicationrepository.create(publication);
 	}

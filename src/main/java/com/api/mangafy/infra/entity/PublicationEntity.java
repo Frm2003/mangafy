@@ -54,5 +54,5 @@ public class PublicationEntity {
 
 	@ManyToMany
 	@JoinTable(name = "publication_genders", joinColumns = @JoinColumn(name = "publication_id"), inverseJoinColumns = @JoinColumn(name = "gender_id"))
-	private List<GenderEntity> genders;
+	private List<GenreEntity> genres;
 }

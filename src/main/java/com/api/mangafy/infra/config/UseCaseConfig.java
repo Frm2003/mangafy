@@ -3,7 +3,7 @@ package com.api.mangafy.infra.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.api.mangafy.application.ports.GenderRepository;
+import com.api.mangafy.application.ports.GenreRepository;
 import com.api.mangafy.application.ports.PasswordHasher;
 import com.api.mangafy.application.ports.PublicationRepository;
 import com.api.mangafy.application.ports.StorageService;
@@ -27,7 +27,7 @@ public class UseCaseConfig {
 	}
 	
 	@Bean
-	CreatePublicationUseCase createPublicationUseCase(PublicationRepository publicationRepository, UserRepository userRepository, GenderRepository genderRepository) {
+	CreatePublicationUseCase createPublicationUseCase(PublicationRepository publicationRepository, UserRepository userRepository, GenreRepository genderRepository) {
 		return new CreatePublicationUseCase(publicationRepository, userRepository, genderRepository);
 	}
 	

@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @Setter
-public class Gender {
+public class Genre {
 	private int id;
 	private String description;
 }

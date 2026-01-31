@@ -2,11 +2,11 @@ package com.api.mangafy.infra.mapper;
 
 import java.util.List;
 
-import com.api.mangafy.domain.Gender;
+import com.api.mangafy.domain.Genre;
 import com.api.mangafy.domain.Publication;
 import com.api.mangafy.domain.User;
 import com.api.mangafy.infra.entity.AuthorProfileEntity;
-import com.api.mangafy.infra.entity.GenderEntity;
+import com.api.mangafy.infra.entity.GenreEntity;
 import com.api.mangafy.infra.entity.PublicationEntity;
 import com.api.mangafy.infra.entity.UserEntity;
 
@@ -17,7 +17,7 @@ public class PublicationMapper {
 		AuthorProfileEntity authorProfileEntity = AuthorProfileMapper.toEntity(publication.getUser().getAuthorProfile(),
 				userEntity);
 
-		List<GenderEntity> genders = publication.getGenders().stream().map(GenderMapper::toEntity).toList();
+		List<GenreEntity> genres = publication.getGenres().stream().map(GenreMapper::toEntity).toList();
 
 		PublicationEntity entity = new PublicationEntity();
 
@@ -30,7 +30,7 @@ public class PublicationMapper {
 		entity.setContentStorageUrl(publication.getContentStorageUrl());
 		entity.setCoverStorageUrl(publication.getCoverStorageUrl());
 
-		entity.setGenders(genders);
+		entity.setGenres(genres);
 		entity.setAuthor(authorProfileEntity);
 
 		return entity;
@@ -42,7 +42,7 @@ public class PublicationMapper {
 
 		User user = UserMapper.toDomain(entity.getAuthor().getUser());
 
-		List<Gender> genders = entity.getGenders().stream().map(GenderMapper::toDomain).toList();
+		List<Genre> genres = entity.getGenres().stream().map(GenreMapper::toDomain).toList();
 
 		Publication publication = new Publication();
 		publication.setId(entity.getId());
@@ -54,7 +54,7 @@ public class PublicationMapper {
 		publication.setContentStorageUrl(entity.getContentStorageUrl());
 
 		publication.setUser(user);
-		publication.setGenders(genders);
+		publication.setGenres(genres);
 
 		return publication;
 	}
