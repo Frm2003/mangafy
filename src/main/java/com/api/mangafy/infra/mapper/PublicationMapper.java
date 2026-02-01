@@ -27,7 +27,6 @@ public class PublicationMapper {
 		entity.setLaunchDate(publication.getLaunchDate());
 		entity.setIsbn10(publication.getISBN10());
 		entity.setIsbn13(publication.getISBN13());
-		entity.setContentStorageUrl(publication.getContentStorageUrl());
 		entity.setCoverStorageUrl(publication.getCoverStorageUrl());
 
 		entity.setGenres(genres);
@@ -51,7 +50,6 @@ public class PublicationMapper {
 		publication.setLaunchDate(entity.getLaunchDate());
 		publication.setISBN10(entity.getIsbn10());
 		publication.setISBN13(entity.getIsbn13());
-		publication.setContentStorageUrl(entity.getContentStorageUrl());
 
 		publication.setUser(user);
 		publication.setGenres(genres);

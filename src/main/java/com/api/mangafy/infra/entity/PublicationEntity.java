@@ -42,9 +42,6 @@ public class PublicationEntity {
 	@Column(unique = true)
 	private String isbn13;
 
-	@Column(name = "content_storage_url", unique = true)
-	private String contentStorageUrl;
-
 	@Column(name = "cover_storage_url", unique = true)
 	private String coverStorageUrl;
 

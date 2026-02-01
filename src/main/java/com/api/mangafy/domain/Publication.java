@@ -21,7 +21,6 @@ public class Publication {
 	private LocalDateTime launchDate;
 	private String ISBN10;
 	private String ISBN13;
-	private String contentStorageUrl;
 	private String coverStorageUrl;
 	private List<Genre> genres;
 }
