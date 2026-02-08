@@ -2,12 +2,9 @@ package com.api.mangafy.adapters.web;
 
 import com.api.mangafy.adapters.dto.BecomeAuthorDto;
 import com.api.mangafy.adapters.dto.CreateUserDto;
+import com.api.mangafy.adapters.security.UserPrincipal;
 import com.api.mangafy.application.useCase.BecomeAuthorUseCase;
 import com.api.mangafy.application.useCase.CreateUserUseCase;
-
-import org.springframework.security.oauth2.jwt.Jwt;
-
-import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,9 +39,9 @@ public class UserController {
 
 	@PreAuthorize("hasRole('READER')")
 	@PutMapping("/author")
-	public ResponseEntity<Void> becomeAuthor(@AuthenticationPrincipal Jwt jwt, @RequestBody BecomeAuthorDto dto) {
+	public ResponseEntity<Void> becomeAuthor(@AuthenticationPrincipal UserPrincipal user, @RequestBody BecomeAuthorDto dto) {
 		try {
-			this.becomeAuthorUseCase.execute(UUID.fromString(jwt.getSubject()), dto);
+			this.becomeAuthorUseCase.execute(user.getId(), dto);
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();

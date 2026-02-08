@@ -1,7 +1,6 @@
 package com.api.mangafy.adapters.security;
 
 import java.nio.charset.StandardCharsets;
-import java.security.Key;
 import java.util.Date;
 import java.util.List;
 
@@ -24,15 +23,20 @@ public class JwtService {
 				.map(GrantedAuthority::getAuthority).toList();
 
 		return Jwts.builder()
-				.setSubject(user.getId().toString())
+				.setSubject(user.getUsername())
 				.claim("roles", roles)
 				.setIssuedAt(new Date())
 				.setExpiration(new Date(System.currentTimeMillis() + 3600000))
-				.signWith(this.getKey(), SignatureAlgorithm.HS256)
+				.signWith(Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8)), SignatureAlgorithm.HS256)
 				.compact();
 	}
-
-	private Key getKey() {
-		return Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
+	
+	public String extractUsername(String token) {
+	    return Jwts.parserBuilder()
+	            .setSigningKey(secretKey.getBytes())
+	            .build()
+	            .parseClaimsJws(token)
+	            .getBody()
+	            .getSubject();
 	}
 }
