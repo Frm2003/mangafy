@@ -11,26 +11,32 @@ import com.api.mangafy.application.ports.UserRepository;
 import com.api.mangafy.application.useCase.BecomeAuthorUseCase;
 import com.api.mangafy.application.useCase.CreatePublicationUseCase;
 import com.api.mangafy.application.useCase.CreateUserUseCase;
+import com.api.mangafy.application.useCase.ShowProfileUserUseCase;
 import com.api.mangafy.application.useCase.UploadImageUseCase;
 
 @Configuration
 public class UseCaseConfig {
-	
+
 	@Bean
 	CreateUserUseCase createUserUseCase(UserRepository userRepository, PasswordHasher passwordHasher) {
 		return new CreateUserUseCase(userRepository, passwordHasher);
 	}
-	
+
 	@Bean
 	BecomeAuthorUseCase becomeAuthorUseCase(UserRepository userRepository) {
 		return new BecomeAuthorUseCase(userRepository);
 	}
-	
+
 	@Bean
 	CreatePublicationUseCase createPublicationUseCase(PublicationRepository publicationRepository, UserRepository userRepository, GenreRepository genderRepository) {
 		return new CreatePublicationUseCase(publicationRepository, userRepository, genderRepository);
 	}
-	
+
+	@Bean
+	ShowProfileUserUseCase showProfileUserUseCase(UserRepository userRepository) {
+		return new ShowProfileUserUseCase(userRepository);
+	}
+
 	@Bean
 	UploadImageUseCase uploadImageUseCase(StorageService service) {
 		return new UploadImageUseCase(service);
