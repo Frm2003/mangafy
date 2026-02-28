@@ -2,11 +2,12 @@
 
 | ID     | Descrição |
 |--------|-----------|
-| RF-001 | O sistema deve permitir o cadastro e manutenção de usuários |
+| RF-001 | O sistema deve permitir o cadastro de novos usuários |
 | RF-002 | O usuário pode se tornar autor |
 | RF-003 | Usuários com perfil de autor podem cadastrar, editar e remover obras |
 | RF-004 | O sistema deve permitir o upload de imagens associadas às obras |
-
+| RF-005 | O sistema deve permitir que o usuário autenticado consulte seu próprio perfil |
+| RF-006 | O sistema deve permitir a consulta pública do perfil de autores |
 ---
 
 ## Regras de Negócio
