@@ -52,3 +52,6 @@ Percebo que a um queda de performance nas requisições, estão levando 600ms pa
 a arquitetura tem muitas camadas e injeções para serem feitas.
 
 Tomei a decisão de deixar as dtos chegarem nos usecases para não diminuir performance, infringindo a regra de denpendencia.
+
+## 28/02/2026
+para não deixar o código desaclopado em excesso, para a endpoint /user/profile, fiz a usecase que retorna User converter esse mesmo user para PrivateUserDto, o que infrige a regra de denpendencia

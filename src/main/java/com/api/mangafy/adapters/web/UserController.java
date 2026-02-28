@@ -2,11 +2,11 @@ package com.api.mangafy.adapters.web;
 
 import com.api.mangafy.adapters.dto.BecomeAuthorDto;
 import com.api.mangafy.adapters.dto.CreateUserDto;
+import com.api.mangafy.adapters.dto.PrivateUserDto;
 import com.api.mangafy.adapters.security.UserPrincipal;
 import com.api.mangafy.application.useCase.BecomeAuthorUseCase;
 import com.api.mangafy.application.useCase.CreateUserUseCase;
 import com.api.mangafy.application.useCase.ShowProfileUserUseCase;
-import com.api.mangafy.domain.User;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +35,7 @@ public class UserController {
 
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/profile")
-	public ResponseEntity<User> becomeAuthor(@AuthenticationPrincipal UserPrincipal user) {
+	public ResponseEntity<PrivateUserDto> becomeAuthor(@AuthenticationPrincipal UserPrincipal user) {
 		try {
 			return ResponseEntity.status(HttpStatus.OK).body(this.showProfileUserUseCase.execute(user.getId()));
 		} catch (Exception e) {
