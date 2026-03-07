@@ -1,0 +1,29 @@
+# Git
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+*.iml
+*.classpath
+*.project
+.settings
+
+# Logs
+*.log
+
+# Node (caso exista frontend depois)
+node_modules
+
+# Build local
+back-end/target
+back-end/.mvn/wrapper/maven-wrapper.jar
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Docs
+doc
+README.md

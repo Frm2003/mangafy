@@ -1,0 +1,25 @@
+FROM eclipse-temurin:25-jdk-jammy AS build
+
+WORKDIR /app
+
+# Copia apenas o back-end
+COPY back-end/ .
+
+# Dá permissão para o mvnw (Linux)
+RUN chmod +x mvnw
+
+# Builda o projeto
+RUN ./mvnw clean package -DskipTests
+
+
+# -------- STAGE 2: Runtime --------
+FROM eclipse-temurin:25-jre-jammy
+
+WORKDIR /app
+
+# Copia o jar gerado
+COPY --from=build /app/target/*.jar app.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "app.jar"]

@@ -19,3 +19,22 @@ services:
         - POSTGRES_PASSWORD=123456
       container_name: database
       restart: always
+  back-end:
+    build:
+      context: .
+      dockerfile: DockerFile
+    container_name: back-end
+    depends_on:
+      - db
+      - minio
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/teste
+      - SPRING_DATASOURCE_USERNAME=dev
+      - SPRING_DATASOURCE_PASSWORD=123456
+      - STORAGE_URL=http://minio:9000
+      - STORAGE_ACCESS_KEY=minioadmin
+      - STORAGE_SECRET_KEY=minioadmin
+      - STORAGE_BUCKET_NAME=mangafy
+      - JWT_SECRET=Qk5PTl9TRUNSRVRfQkFTRTY0X0tFWV9IRVJF
